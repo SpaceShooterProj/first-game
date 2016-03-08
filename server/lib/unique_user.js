@@ -9,11 +9,9 @@ module.exports = exports = function(req, res, next) {
       console.log(err);
       return res.status(401).json({msg: 'Could not authenticate'});
     }
-
     if (user) {
       return res.status(409).json({msg: 'User already exists'});
     }
-
     return next();
   });
 };

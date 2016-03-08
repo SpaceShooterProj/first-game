@@ -1,7 +1,7 @@
 const zeroBuffer = require(__dirname + '/zero_buffer');
 
 module.exports = exports = function(req, res, next) {
-  try { 
+  try {
     var authString = req.headers.authorization;
     var base64String = authString.split(' ')[1];
     var authBuf = new Buffer(base64String, 'base64');

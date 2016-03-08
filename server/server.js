@@ -14,7 +14,8 @@ const authRouter = require(__dirname + '/routes/auth_routes');
 const publicRouter = require(__dirname + '/routes/public_routes');
 
 app.use('/api' , authRouter);
-// app.use(publicRouter);
+app.use('/api' , publicRouter);
+
 
 var PORT = process.env.PORT || 3000;
 module.exports.server = app.listen(PORT, () => console.log('server up on port: ' + PORT));
