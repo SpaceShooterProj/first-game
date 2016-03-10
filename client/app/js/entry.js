@@ -7,7 +7,6 @@ require('oclazyload');
 
 const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule']);
 
-require('./services')(gameApp);
 require('./game')(gameApp);
 require('./auth')(gameApp);
 
@@ -17,11 +16,10 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
     loadedModules: ['gameApp'] , modules: [
       {
         name: 'displayGame',
-        files: ['game.js']
+        files: ['/game/js/game.min.js']
       }
     ]
-  }); //end
-
+  });
   routes
     .when('/', {
       controller: 'SigninController',
@@ -49,5 +47,4 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
     .otherwise({
       templateUrl: '/views/four_oh_four.html'
     });//end
-
 }]);

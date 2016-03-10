@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+  <head lang="en">
     <meta charset="UTF-8">
     <title>Spaceshooter</title>
-    <meta name="author" content="Mathieu de Ruiter - Couchfriends.com"/>
-    <link rel="stylesheet" href="game.css"/>
-</head>
-<body>
-<div id="ui">
-    <img src="assets/icon-mute.png" id="sound-mute"/>
-    <img src="assets/icon-volume-up.png" id="sound-volume-up"/>
-    <img src="assets/icon-volume-down.png" id="sound-volume-down"/>
-    <p>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <div id="ui">
+      <img src="assets/icon-mute.png" id="sound-mute"/>
+      <img src="assets/icon-volume-up.png" id="sound-volume-up"/>
+      <img src="assets/icon-volume-down.png" id="sound-volume-down"/>
+      <p>
         <strong>M</strong>: Mute sounds<br/>
         <strong>+</strong>: Increase volume<br/>
         <strong>-</strong>: Decrease volume
-    </p>
-</div>
-<div id="game"></div>
-<!-- The first srcipt gets the couchfriends api, gonna get rid of that, the second is the tween.js lib, the third is the pixi.js lib, the fourth is the randomcolor.js -->
-<script src="tween.js"></script>
-<script src="pixi.js"></script>
-<script src="howler.core.js"></script>
-<script src="randomcolor.js"></script>
-<script src="SpaceShooter.js"></script>
-<script src="SpaceShooter.Player.js"></script>
-<script src="SpaceShooter.Assets.js"></script>
-<script src="SpaceShooter.Enemies.js"></script>
-<script src="SpaceShooter.Levels.js"></script>
-<script src="SpaceShooter.Tools.js"></script>
-<script src="game.js"></script>
-</body>
+      </p>
+    </div>
+    <div id="game"></div>
+    <script src="tween.js"></script>
+    <script src="pixi.js"></script>
+    <script src="howler.core.js"></script>
+    <script src="randomcolor.js"></script>
+    <script src="SpaceShooter.js"></script>
+    <script src="SpaceShooter.Player.js"></script>
+    <script src="SpaceShooter.Assets.js"></script>
+    <script src="SpaceShooter.Enemies.js"></script>
+    <script src="SpaceShooter.Levels.js"></script>
+    <script src="SpaceShooter.Tools.js"></script>
+    <script src="game.js"></script>
+  </body>
 </html>

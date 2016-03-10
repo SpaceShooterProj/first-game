@@ -1,15 +1,1 @@
-<!-- Styles currently not implemeneted -->
-<!-- Note - This is a child scope of SignUpController unintentionally -->
-<div class="container" ng-controller="GameController"  ng-init="isGame()">
-    <div id="ui">
-        <img src="assets/icon-mute.png" id="sound-mute"/>
-        <img src="assets/icon-volume-up.png" id="sound-volume-up"/>
-        <img src="assets/icon-volume-down.png" id="sound-volume-down"/>
-        <p>
-            <strong>M</strong>: Mute sounds<br/>
-            <strong>+</strong>: Increase volume<br/>
-            <strong>-</strong>: Decrease volume
-        </p>
-    </div>
-    <div id="game"></div>
-</div>
+<div class="container" ng-controller="GameController" ng-init="isGame()"><div id="ui"><img src="game/assets/icon-mute.png" id="sound-mute"> <img src="game/assets/icon-volume-up.png" id="sound-volume-up"> <img src="game/assets/icon-volume-down.png" id="sound-volume-down"><p><strong>M</strong>: Mute sounds<br><strong>+</strong>: Increase volume<br><strong>-</strong>: Decrease volume</p></div><div id="game"></div><script src="/game/js/game.min.js"></script></div>

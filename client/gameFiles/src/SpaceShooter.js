@@ -3,7 +3,7 @@ var SpaceShooter = {
   settings: {
     width: 1024,
     height: 1024,
-    assetsDir: 'assets/'
+    assetsDir: 'game/assets/'
   },
   objects: [],
   scoreCurrency: 'Points ', // Prefix for score.

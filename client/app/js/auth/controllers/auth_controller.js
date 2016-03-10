@@ -12,6 +12,7 @@ module.exports = function(app) {
     $scope.logout = function() {
       userAuth.signOut(function() {
         $scope.username = null;
+        localStorage.clear();
       });
     };
   }]);
