@@ -37,7 +37,7 @@ module.exports = function(app) {
         })
         .then(function(res) {
           token = $window.localStorage.token = res.data.token;
-          callback(null);
+          callback(null, res);
         }, function(res) {
           callback(res);
         });

@@ -7,7 +7,7 @@
 			  <section class="header-left">
 			    <section class="header-item">
 			      <p class="control is-grouped">
-							Logo
+							Spacecataz
 			      </p>
 			    </section>
 			  </section>
@@ -20,16 +20,18 @@
 					<p class="header-item">
 						<a href ng-if="username" data-ng-click="logout()">logout</a>
 					</p>
-			    <p class="header-item"><a href="#/">Home</a></p>
-			    <p class="header-item"><a href="#/about">About</a></p>
-			    <p class="header-item"><a href="#/game">Quick Play</a></p>
-			    <!-- <p class="header-item"><a class="button is-success">New</a></p> -->
+					<p class="header-item">
+						<a href ng-if="!username" ng-href="#/">Sign in</a>
+					</p>
+			    <p class="header-item"><a ng-href="#/home">Home</a></p>
+			    <p class="header-item"><a ng-href="#/about">About</a></p>
+			    <p class="header-item"><a ng-href="#/game" class="button is-info">Play Game</a></p>
 			  </section>
 			</nav>
 		</header>
 		<section class="hero-content">
 			<section class="container">
-				<h1 class="title is-1">SPACECATAZ</h1>
+				<h1 class="title is-1">Our Team</h1>
 				<p class="subtitle">An app created by Team Spacecataz</p>
 			</section>
 		</section>
@@ -38,32 +40,55 @@
 
 <section class="section">
   <div class="container">
-    <h1>Our Team</h1>
       <ul>
-        <li><h3>James Mason</h3><hr />
+        <li><h3>James Mason</h3>
+					<p class="image is-128x128">
+					  <img src="./images/james.jpg">
+					</p>
           <p>Truffaut cold-pressed pitchfork, flexitarian craft beer keytar chicharrones pop-up marfa direct trade next level whatever. Venmo YOLO squid butcher. Man bun try-hard mustache, banh mi fap cray williamsburg bicycle rights master cleanse beard small batch. +1 beard 8-bit, squid wolf kale chips food truck drinking vinegar narwhal small batch letterpress.</p>
         </li>
       </ul>
+			<hr />
+
       <ul>
-        <li><h3>Ardian Ajvazi</h3><hr />
+        <li><h3>Ardian Ajvazi</h3>
+				<p class="image is-128x128">
+						<img src="./images/ardian.jpg">
+					</p>
           <p>Truffaut cold-pressed pitchfork, flexitarian craft beer keytar chicharrones pop-up marfa direct trade next level whatever. Venmo YOLO squid butcher. Man bun try-hard mustache, banh mi fap cray williamsburg bicycle rights master cleanse beard small batch. +1 beard 8-bit, squid wolf kale chips food truck drinking vinegar narwhal small batch letterpress.</p>
         </li>
       </ul>
+			<hr />
+
       <ul>
-        <li><h3>Cameron Forras</h3><hr />
+        <li><h3>Cameron Forras</h3>
+					<p class="image is-128x128">
+						<img src="./images/cameron.jpg">
+					</p>
           <p>Truffaut cold-pressed pitchfork, flexitarian craft beer keytar chicharrones pop-up marfa direct trade next level whatever. Venmo YOLO squid butcher. Man bun try-hard mustache, banh mi fap cray williamsburg bicycle rights master cleanse beard small batch. +1 beard 8-bit, squid wolf kale chips food truck drinking vinegar narwhal small batch letterpress.</p>
         </li>
       </ul>
+			<hr />
+
       <ul>
-        <li><h3>Jesse Thach</h3><hr />
+        <li><h3>Jesse Thach</h3>
+					<p class="image is-128x128">
+						<img src="./images/jesse.jpg">
+					</p>
           <p>Truffaut cold-pressed pitchfork, flexitarian craft beer keytar chicharrones pop-up marfa direct trade next level whatever. Venmo YOLO squid butcher. Man bun try-hard mustache, banh mi fap cray williamsburg bicycle rights master cleanse beard small batch. +1 beard 8-bit, squid wolf kale chips food truck drinking vinegar narwhal small batch letterpress. </p>
         </li>
       </ul>
+			<hr />
+
       <ul>
-        <li><h3>Joshua Ho</h3><hr />
+        <li><h3>Joshua Ho</h3>
+					<p class="image is-128x128">
+						<img src="./images/josh.jpg">
+					</p>
           <p>Truffaut cold-pressed pitchfork, flexitarian craft beer keytar chicharrones pop-up marfa direct trade next level whatever. Venmo YOLO squid butcher. Man bun try-hard mustache, banh mi fap cray williamsburg bicycle rights master cleanse beard small batch. +1 beard 8-bit, squid wolf kale chips food truck drinking vinegar narwhal small batch letterpress.</p>
         </li>
       </ul>
+			<hr />
 
   </div>
 </section>

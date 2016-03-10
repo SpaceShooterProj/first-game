@@ -7,7 +7,7 @@
 			  <section class="header-left">
 			    <section class="header-item">
 			      <p class="control is-grouped">
-							Logo
+							Spacecataz
 			      </p>
 			    </section>
 			  </section>
@@ -20,10 +20,12 @@
 					<p class="header-item">
 						<a href ng-if="username" data-ng-click="logout()">logout</a>
 					</p>
-			    <p class="header-item"><a href="#/">Home</a></p>
-			    <p class="header-item"><a href="#/about">About</a></p>
-			    <p class="header-item"><a href="#/game">Quick Play</a></p>
-			    <!-- <p class="header-item"><a class="button is-success">New</a></p> -->
+					<p class="header-item">
+						<a href ng-if="!username" ng-href="#/">Sign in</a>
+					</p>
+			    <p class="header-item"><a ng-href="#/home">Home</a></p>
+			    <p class="header-item"><a ng-href="#/about">About</a></p>
+			    <p class="header-item"><a ng-href="#/game" class="button is-info">Play Game</a></p>
 			  </section>
 			</nav>
 		</header>
@@ -36,12 +38,10 @@
 	</section>
 </section>
 
-<section class="section" ng-init="friends = [{name:'John', phone:'555-1276'},
-                         {name:'Mary', phone:'800-BIG-MARY'},
-                         {name:'Mike', phone:'555-4321'},
-                         {name:'Adam', phone:'555-5678'},
-                         {name:'Julie', phone:'555-8765'},
-                         {name:'Juliette', phone:'555-5678'}]">
+<section class="section" ng-init="openSourceGames = [{name:'John', type:'Arcade', url:'https://github.com/gamebytes/cellmates'},
+                         {name:'Asteroids', type:'Arcade', url:'https://github.com/dmcinnes/HTML5-Asteroids'},
+                         {name:'Coil', type:'Arcade', url:'https://github.com/leereilly/Coil'},
+                         {name:'Game of Life', type:'Mobile', url:'https://github.com/zsoltk/GameOfLife'}]">
 
   <section class="container">
 
@@ -57,10 +57,10 @@
 				<section class="column is-half is-offset-quarter">
 			    <section class="notification">
 						<table id="searchTextResults">
-						  <tr><th>Name</th><th>Phone</th></tr>
-						  <tr ng-repeat="friend in friends | filter:searchText">
-						    <td>{{friend.name}}</td>
-						    <td>{{friend.phone}}</td>
+						  <tr><th>Game</th><th>Type</th></tr>
+						  <tr ng-repeat="openSource in openSourceGames | filter:searchText">
+						    <td>{{openSource.name}}</td>
+						    <td>{{openSource.type}}</td>
 						  </tr>
 			    </section>
 				</section>

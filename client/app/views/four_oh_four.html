@@ -20,10 +20,12 @@
 					<p class="header-item">
 						<a href ng-if="username" data-ng-click="logout()">logout</a>
 					</p>
-			    <p class="header-item"><a href="#/">Home</a></p>
-			    <p class="header-item"><a href="#/about">About</a></p>
-			    <p class="header-item"><a href="#/game">Quick Play</a></p>
-			    <!-- <p class="header-item"><a class="button is-success">New</a></p> -->
+					<p class="header-item">
+						<a href ng-if="!username" ng-href="#/">Sign in</a>
+					</p>
+			    <p class="header-item"><a ng-href="#/home">Home</a></p>
+			    <p class="header-item"><a ng-href="#/about">About</a></p>
+			    <p class="header-item"><a ng-href="#/game" class="button is-info">Play Game</a></p>
 			  </section>
 			</nav>
 		</header>

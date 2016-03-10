@@ -44,14 +44,43 @@
         <section ng-if="userExists" class="notification is-warning">
           Username already exists – try again!
         </section>
+        <section ng-if="userWrong" class="notification is-warning">
+          User does not match our records
+        </section>
         <section class="columns is-mobile">
           <section class="column is-4">
             <p ng-if="!signup">Dont have an account? <a ng-href="/#/signup" ng-if="!signup">Sign-Up</a></p>
             <p ng-if="signup">Have an account? <a ng-href="/#/" ng-if="signup">Login</a></p>
           </section>
-          <section class="column is-4 is-offset-6"><a ng-href="/#/game">Guest</a></section>
         </section>
       </section>
     </section>
   </section>
 </section>
+
+<footer class="footer">
+
+  <div class="columns">
+    <div class="column">
+        <div>
+          <p>
+            <a class="icon" href="https://github.com/SpaceShooterProj/first-game">
+              <i class="fa fa-github"></i>
+            </a>
+          </p>
+        </div>
+      </div>
+      <section>
+        <a class="button is-primary is-outlined" ng-href="/#/home">Home</a>
+        <a class="button is-primary is-outlined" ng-href="/#/about">About Us</a>
+      </section>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</footer>

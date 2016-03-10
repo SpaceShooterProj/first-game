@@ -7,7 +7,7 @@ describe('Karma test', () => {
 });
 
 describe('Style controller', () => {
-  var $httpBackend;//takes parameters from user such a GET request and returns a promise
+  var $httpBackend;
   var $scope;
   var $ControllerConstructor;
 
@@ -21,11 +21,14 @@ describe('Style controller', () => {
   it('should be able to make a style controller', () => {
     var styleController = $ControllerConstructor('StyleController', {$scope});
     expect(typeof styleController).toBe('object');
-    expect($scope.mainstyle).toBe(true);
     expect(typeof $scope.isMain).toBe('function');
+  });
+
+  it('should test the isGame function', () => {
+    var styleController = $ControllerConstructor('StyleController', {$scope});
+    expect($scope.mainstyle).toBe(true);
     $scope.isGame();
     expect($scope.mainstyle).toBe(false);
-
   });
 
 });

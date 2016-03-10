@@ -36,6 +36,11 @@ gulp.task('webpack:dev', () => {
     .pipe(gulp.dest('build/'));
 });
 
+gulp.task('images:dev', () => {
+  gulp.src(__dirname + '/app/images/**/*')
+    .pipe(gulp.dest(__dirname + '/build/images'));
+});
+
 // gulp.task('lint', () => {
 //   return gulp.src(jsFiles)
 //     .pipe(eslint())
@@ -68,5 +73,5 @@ gulp.task('webpack:test', () => {
 //   gulp.watch([jsFiles, staticFiles], ['build:dev']);
 // });
 
-gulp.task('build:dev', ['html:dev', 'webpack:dev', 'sass:dev']);
+gulp.task('build:dev', ['html:dev', 'webpack:dev', 'sass:dev', 'images:dev']);
 gulp.task('default', ['build:dev']);
