@@ -23,12 +23,14 @@
   "homepage": "https://github.com/SpaceShooterProj/first-game#readme",
   "dependencies": {
     "angular-animate": "^1.5.0",
-    "angular-local-storage": "^0.2.6",
+    "bulma": "0.0.16",
     "express": "^4.13.4",
+    "angular-local-storage": "^0.2.6",
     "oclazyload": "^1.0.9"
   },
   "devDependencies": {
     "angular": "^1.5.0",
+    "angular-css": "^1.0.7",
     "angular-mocks": "^1.5.0",
     "angular-route": "^1.5.0",
     "babel-core": "^6.6.5",

@@ -1,3 +1,15 @@
+var handleSuccess = function(callback) {
+  return function(res) {
+    callback(null, res.data);
+  }
+};
+
+var handleFailure = function(callback) {
+  return function(res) {
+    callback(res);
+  }
+};
+
 module.exports = function(app) {
   app.factory('userAuth', ['$http', '$window', function($http, $window) {
     var token;
@@ -8,9 +20,9 @@ module.exports = function(app) {
         $http.post('http://localhost:3000/api/signup', user)
         .then(function(res) {
           token = $window.localStorage.token = res.data.token;
-          callback(null);
+          callback(null, res);
         }, function(res) {
-          callback(res.err)
+          callback(res)
         });
       },
 

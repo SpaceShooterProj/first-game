@@ -3,7 +3,7 @@ module.exports = function(app) {
     $scope.submit = function(user) {
       auth.signIn(user, function() {
         //fix me playa!? possibly...
-        $location.path('/dashboard');
+        $location.path('/game');
       });
     };
   }]);

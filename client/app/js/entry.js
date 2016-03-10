@@ -1,13 +1,11 @@
 const angular = require('angular');
 require('angular-route');
-//Animations
-require('angular-animate');
 
 //Used to run game.js
 require('angular-local-storage');
 require('oclazyload');
 
-const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule' , 'ngAnimate']);
+const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule']);
 
 require('./services')(gameApp);
 require('./game')(gameApp);
@@ -26,22 +24,21 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
 
   routes
     .when('/', {
+      controller: 'SigninController',
+      templateUrl: '/views/sign_up_in_view.html'
+    })
+    .when('/home', {
+      controller: 'SigninController',
       templateUrl: '/views/home.html'
     })
-    .when('/modal', {
-      controller: 'GameController',
-      templateUrl: '/views/menu_modal_view.html'
+    .when('/about', {
+      templateUrl: '/views/about.html'
     })
     .when('/signup', {
       controller: 'SignupController',
       templateUrl: '/views/sign_up_in_view.html'
     })
-    .when('/signin', {
-      controller: 'SigninController',
-      templateUrl: '/views/sign_up_in_view.html'
-    })
-    .when('/game' , {
-      controller: 'GameController',
+    .when('/game', {
       templateUrl: '/views/game_main.html',
       resolve: {
         loadModule: ['$ocLazyLoad' , function ($ocLazyLoad) {

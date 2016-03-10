@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="gameApp" ng-controller="StyleController">
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="game.css" media="screen" title="no title" charset="utf-8">
+    <link data-ng-if="mainstyle" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link data-ng-if="mainstyle" rel="stylesheet" href="/sass/styles.css">
+    <link data-ng-cloak data-ng-if="!mainstyle" rel="stylesheet" href="/game.css" media="screen" title="no title" charset="utf-8">
+
   </head>
-  <body >
-    <div ng-app="gameApp">
+  <body>
+    <div>
 
         <main>
           <section data-ng-view></section>

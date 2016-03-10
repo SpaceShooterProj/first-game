@@ -1,9 +1,6 @@
 <!-- Styles currently not implemeneted -->
 <!-- Note - This is a child scope of SignUpController unintentionally -->
-
-<div class="container" ng-controller="GameController" style="border:3px solid black">
-  <game-main-menu></game-main-menu>
-  <body>
+<div class="container" ng-controller="GameController"  ng-init="isGame()">
     <div id="ui">
         <img src="assets/icon-mute.png" id="sound-mute"/>
         <img src="assets/icon-volume-up.png" id="sound-volume-up"/>
@@ -15,7 +12,4 @@
         </p>
     </div>
     <div id="game"></div>
-
-  </body>
-  <game-over></game-over>
 </div>
