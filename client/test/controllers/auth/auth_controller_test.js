@@ -5,6 +5,10 @@ describe('Auth controller', () => {
   var $scope;
   var $ControllerConstructor;
   var user;
+  var baseURL = function() {
+    if (window.location.href.indexOf('/', 9) !== -1) return window.location.href.substr(0, window.location.href.indexOf('/', 9));
+    return window.location.href;
+  }();
 
   beforeEach(angular.mock.module('gameApp'));
 
@@ -36,19 +40,13 @@ describe('Auth controller', () => {
         username: 'testuser'
       };
 
-      $httpBackend.expectGET('http://localhost:3000/api/currentuser').respond(200, user);
+      $httpBackend.expectGET(baseURL + '/api/currentuser').respond(200, user);
       $scope.updateUsername();
       $httpBackend.flush();
       expect($scope.username).toBe('testuser');
     });
 
-    // it('should make a get request to /api/signin', () => {
-    //
-    //   $httpBackend.expectGET('http://localhost:3000/api/currentuser').respond(200, user);
-    //   $scope.submit(user);
-    //   $httpBackend.flush();
-    //   expect($scope.userWrong).toBe(null);
-    // });
+
   });
 
 });

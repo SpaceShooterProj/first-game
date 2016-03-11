@@ -5,6 +5,10 @@ describe('Signup controller', () => {
   var $scope;
   var $ControllerConstructor;
   var user;
+  var baseURL = function() {
+    if (window.location.href.indexOf('/', 9) !== -1) return window.location.href.substr(0, window.location.href.indexOf('/', 9));
+    return window.location.href;
+  }();
 
   beforeEach(angular.mock.module('gameApp'));
 
@@ -31,7 +35,7 @@ describe('Signup controller', () => {
     });
 
     it('should make a get request to /api/signup and receive an error', () => {
-      $httpBackend.expectPOST('http://localhost:3000/api/signup').respond(409);
+      $httpBackend.expectPOST(baseURL + '/api/signup').respond(409);
       $scope.submit(user);
       $httpBackend.flush();
       expect($scope.userExists).toBe(true);
@@ -45,7 +49,7 @@ describe('Signup controller', () => {
         token: 'testtoken'
       };
 
-      $httpBackend.expectPOST('http://localhost:3000/api/signup').respond(200, user);
+      $httpBackend.expectPOST(baseURL + '/api/signup').respond(200, user);
       $scope.submit(user);
       $httpBackend.flush();
       expect($scope.userExists).toBe(null);
