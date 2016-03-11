@@ -5,5 +5,5 @@
 db/
 /public/css/style.css
 coverage/
-test/*bundle.js
+**/test/*bundle.js
 build/

@@ -1,4 +1,3 @@
-window.onload = init;
 var renderer, stage, players = [], sounds = [];
 function init() {
   var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 800);
@@ -165,3 +164,5 @@ var InitializeShipActions = function(players) {
     if (Math.abs(players[0].ship.speed.y) > 0 && players[0].ship.decelerateYSpeed && players[0].ship.speed.y < 0) players[0].ship.speed.y +=  players[0].ship.decelerationYSpeed;
   }, decelerationSpeed);
 };
+
+setTimeout(function() {init()}, 1000);

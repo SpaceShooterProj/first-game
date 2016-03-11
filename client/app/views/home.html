@@ -1,4 +1,68 @@
-<section>
-  <a ng-href="#/signin">Login</a>
-  <a ng-href="#/signup">Sign up</a>
+<section class="hero is-primary" ng-controller="authController" ng-init="isMain()">
+	<section class="hero-header">
+		<header class="header">
+			<!-- Main container -->
+			<nav class="container">
+			  <!-- Left side -->
+			  <section class="header-left">
+			    <section class="header-item">
+			      <p class="control is-grouped">Spacecataz</p>
+			    </section>
+			  </section>
+
+			  <!-- Right side -->
+				<section class="header-right" ng-init="updateUsername()">
+					<p class="header-item" data-ng-if="username">
+						Hello {{username}}
+					</p>
+					<p class="header-item">
+						<a href ng-if="username" data-ng-click="logout()">logout</a>
+					</p>
+					<p class="header-item">
+						<a href ng-if="!username" ng-href="#/">Sign in</a>
+					</p>
+			    <p class="header-item"><a ng-href="#/home">Home</a></p>
+			    <p class="header-item"><a ng-href="#/about">About</a></p>
+			    <p class="header-item"><a ng-href="#/game" class="button is-info">Play Game</a></p>
+			  </section>
+			</nav>
+		</header>
+		<section class="hero-content">
+			<section class="container">
+				<h1 class="title is-1">SPACECATAZ</h1>
+				<p class="subtitle">An app created by Team Spacecataz</p>
+			</section>
+		</section>
+	</section>
+</section>
+
+<section class="section" ng-init="openSourceGames = [{name:'John', type:'Arcade', url:'https://github.com/gamebytes/cellmates'},
+                         {name:'Asteroids', type:'Arcade', url:'https://github.com/dmcinnes/HTML5-Asteroids'},
+                         {name:'Coil', type:'Arcade', url:'https://github.com/leereilly/Coil'},
+                         {name:'Game of Life', type:'Mobile', url:'https://github.com/zsoltk/GameOfLife'}]">
+
+  <section class="container">
+
+			<section class="columns">
+
+				<section class="column is-half is-offset-quarter">
+
+					<input ng-model="searchText" class="input" type="text" placeholder="Search Games">
+				</section>
+			</section>
+
+			<section class="columns">
+				<section class="column is-half is-offset-quarter">
+			    <section class="notification">
+						<table id="searchTextResults">
+						  <tr><th>Game</th><th>Type</th></tr>
+						  <tr ng-repeat="openSource in openSourceGames | filter:searchText">
+						    <td>{{openSource.name}}</td>
+						    <td>{{openSource.type}}</td>
+						  </tr>
+			    </section>
+				</section>
+			</section>
+
+  </section>
 </section>

@@ -6,7 +6,6 @@ module.exports = function(app) {
       templateUrl: '/templates/game/directives/signup_directive.html',
       scope: {
         buttonText: '@'
-
       }
     };
   });

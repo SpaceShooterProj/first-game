@@ -1,23 +1,7 @@
 var angular = require('angular');
-
 module.exports = function(app) {
-  app.controller('GameController', ['$scope', '$ocLazyLoad' , '$compile' , function($scope , $ocLazyLoad , $compile) {
-
-    $scope.alertSomething = function() {
-      var promise = modals.open(
-        "alert",
-        {
-          message: "I think you are kind of beautiful!"
-        }
-      );
-      promise.then(
-				function handleResolve( response ) {
-					console.log( "Alert resolved." );
-				},
-				function handleReject( error ) {
-					console.warn( "Alert rejected!" );
-				}
-			);
-    }
+  app.controller('GameController', ['$scope', '$compile', '$window', '$location', function($scope, $compile, $window, $location) {
+    if (!$window.localStorage.token) $location.url('/');
+    if ($window.localStorage.token) $location.url('/game');
   }]);
 };

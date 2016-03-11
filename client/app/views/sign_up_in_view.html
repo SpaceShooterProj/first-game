@@ -1,18 +1,80 @@
-<nav>
-  <a ng-href="/#/signup" ng-if="!signup">Sign-Up</a>
-  <a ng-href="/#/" ng-if="signup">Login</a>
+<section class="hero is-primary" ng-init="isMain()">
+  <div class="hero-content">
+    <div class="container">
+      <h1 class="title">
+        SPACECATAZ
+      </h1>
+      <h2 class="subtitle">
+        Open Source Games
+      </h2>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <section class="container" >
+    <section class="columns is-mobile">
+      <section class="column is-half is-offset-quarter">
 
-</nav>
-<form  name="authForm" data-ng-submit="submit(auth)">
-  <label data-ng-if="signup" for="username">Username: </label>
-  <input data-ng-if="signup" type="text" name="username" data-ng-model="auth.username">
-  <label for="email">Email: </label>
-  <input type="text" required name="email" data-ng-model="auth.email">
-  <label for="password">Password</label>
-  <input type="password" required name="password" data-ng-model="auth.password">
-  <label data-ng-if="signup" for="confirmation">Confirmation:</label>
-  <input data-ng-if="signup" type="password" name="confirmation" data-ng-model="auth.confirmation">
-  <button type="submit" data-ng-disabled="(signup && (auth.confirmation !== auth.password)) || authForm.$invalid">{{signup ? 'Create New User' : 'Sign In'}}</button>
-</form>
-<br />
-<a ng-href="/#/game" >Guest</a>
+        <form  name="authForm" data-ng-submit="submit(auth)">
+          <p class="control">
+            <label class="label" data-ng-if="signup" for="username">Username: </label>
+            <input class="input is-primary" data-ng-if="signup" type="text" name="username" data-ng-model="auth.username">
+          </p>
+          <p class="control">
+            <label class="label" for="email">Email: </label>
+            <input class="input is-primary" type="text" required name="email" data-ng-model="auth.email">
+          </p>
+          <p class="control">
+            <label class="label" for="password">Password</label>
+            <input class="input is-primary" type="password" required name="password" data-ng-model="auth.password">
+          </p>
+
+          <p class="control">
+            <label class="label" data-ng-if="signup" for="confirmation">Confirmation:</label>
+            <input class="input is-primary" data-ng-if="signup" type="password" name="confirmation" data-ng-model="auth.confirmation">
+          </p>
+          <p class="control">
+            <button class="button is-primary" type="submit" data-ng-disabled="(signup && (auth.confirmation !== auth.password)) || authForm.$invalid">{{signup ? 'Create New User' : 'Sign In'}}</button>
+          </p>
+
+        </form>
+        <br />
+
+        <section ng-if="userExists" class="notification is-warning">
+          Username already exists – try again!
+        </section>
+        <section ng-if="userWrong" class="notification is-warning">
+          User does not match our records
+        </section>
+        <section class="columns is-mobile">
+          <section class="column is-4">
+            <p ng-if="!signup">Dont have an account? <a ng-href="/#/signup" ng-if="!signup">Sign-Up</a></p>
+            <p ng-if="signup">Have an account? <a ng-href="/#/" ng-if="signup">Login</a></p>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
+</section>
+<footer class="footer">
+  <div class="columns">
+    <div class="column is-4">
+    </div>
+
+    <div class="column is-2 is-offset-1">
+      <div>
+        <p>
+          <a class="icon" href="https://github.com/SpaceShooterProj/first-game">
+            <i class="fa fa-github">GitHub</i>
+          </a><br />
+          <p>&copy Spacecataz</p>
+
+        </p>
+      </div>
+    </div>
+    <div class="column is-2 is-offset-2">
+      <a class="button is-primary is-outlined" ng-href="/#/home">Home</a>
+      <a class="button is-primary is-outlined" ng-href="/#/about">About Us</a>
+    </div>
+  </div>
+</footer>

@@ -1,16 +1,12 @@
 const angular = require('angular');
 require('angular-route');
-//Animations
-require('angular-animate');
-require('angular-css');
 
 //Used to run game.js
 require('angular-local-storage');
 require('oclazyload');
 
-const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule' , 'ngAnimate', 'door3.css']);
+const gameApp = angular.module('gameApp', ['ngRoute' , 'oc.lazyLoad', 'LocalStorageModule']);
 
-require('./services')(gameApp);
 require('./game')(gameApp);
 require('./auth')(gameApp);
 
@@ -20,19 +16,18 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
     loadedModules: ['gameApp'] , modules: [
       {
         name: 'displayGame',
-        files: ['game.js']
+        files: ['/game/js/game.min.js']
       }
     ]
-  }); //end
-
+  });
   routes
-    // .when('/', {
-    //   templateUrl: '/views/home.html',
-    //   css: '/sass/styles.css'
-    // })
-    .when('/modal', {
-      controller: 'GameController',
-      templateUrl: '/views/menu_modal_view.html'
+    .when('/', {
+      controller: 'SigninController',
+      templateUrl: '/views/sign_up_in_view.html'
+    })
+    .when('/home', {
+      controller: 'SigninController',
+      templateUrl: '/views/home.html'
     })
     .when('/about', {
       templateUrl: '/views/about.html'
@@ -41,12 +36,7 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
       controller: 'SignupController',
       templateUrl: '/views/sign_up_in_view.html'
     })
-    .when('/', {
-      controller: 'SigninController',
-      templateUrl: '/views/sign_up_in_view.html'
-    })
-    .when('/game' , {
-      controller: 'GameController',
+    .when('/game', {
       templateUrl: '/views/game_main.html',
       resolve: {
         loadModule: ['$ocLazyLoad' , function ($ocLazyLoad) {
@@ -57,5 +47,4 @@ gameApp.config(['$ocLazyLoadProvider' , '$routeProvider', 'localStorageServicePr
     .otherwise({
       templateUrl: '/views/four_oh_four.html'
     });//end
-
 }]);

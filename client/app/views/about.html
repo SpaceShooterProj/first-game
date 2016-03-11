@@ -1,31 +1,159 @@
-<section style="color: white;">
-  <div>
-    <h1>Our Team</h1>
-      <ul>
-        <li><h3>James Mason</h3><hr />
-          <p>Truffaut cold-pressed pitchfork, flexitarian craft beer keytar chicharrones pop-up marfa direct trade next level whatever. Venmo YOLO squid butcher. Man bun try-hard mustache, banh mi fap cray williamsburg bicycle rights master cleanse beard small batch. +1 beard 8-bit, squid wolf kale chips food truck drinking vinegar narwhal small batch letterpress.</p>
-        </li>
-      </ul>
-      <ul>
-        <li><h3>Ardian Ajvazi</h3><hr />
-          <p>Truffaut cold-pressed pitchfork, flexitarian craft beer keytar chicharrones pop-up marfa direct trade next level whatever. Venmo YOLO squid butcher. Man bun try-hard mustache, banh mi fap cray williamsburg bicycle rights master cleanse beard small batch. +1 beard 8-bit, squid wolf kale chips food truck drinking vinegar narwhal small batch letterpress.</p>
-        </li>
-      </ul>
-      <ul>
-        <li><h3>Cameron Forras</h3><hr />
-          <p>Truffaut cold-pressed pitchfork, flexitarian craft beer keytar chicharrones pop-up marfa direct trade next level whatever. Venmo YOLO squid butcher. Man bun try-hard mustache, banh mi fap cray williamsburg bicycle rights master cleanse beard small batch. +1 beard 8-bit, squid wolf kale chips food truck drinking vinegar narwhal small batch letterpress.</p>
-        </li>
-      </ul>
-      <ul>
-        <li><h3>Jesse Thach</h3><hr />
-          <p>Truffaut cold-pressed pitchfork, flexitarian craft beer keytar chicharrones pop-up marfa direct trade next level whatever. Venmo YOLO squid butcher. Man bun try-hard mustache, banh mi fap cray williamsburg bicycle rights master cleanse beard small batch. +1 beard 8-bit, squid wolf kale chips food truck drinking vinegar narwhal small batch letterpress. </p>
-        </li>
-      </ul>
-      <ul>
-        <li><h3>Joshua Ho</h3><hr />
-          <p>Truffaut cold-pressed pitchfork, flexitarian craft beer keytar chicharrones pop-up marfa direct trade next level whatever. Venmo YOLO squid butcher. Man bun try-hard mustache, banh mi fap cray williamsburg bicycle rights master cleanse beard small batch. +1 beard 8-bit, squid wolf kale chips food truck drinking vinegar narwhal small batch letterpress.</p>
-        </li>
-      </ul>
+<section class="hero is-primary" ng-controller="authController" ng-init="isMain()">
+	<section class="hero-header">
+		<header class="header">
+			<!-- Main container -->
+			<nav class="container">
+			  <!-- Left side -->
+			  <section class="header-left">
+			    <section class="header-item">
+			      <p class="control is-grouped">Spacecataz</p>
+			    </section>
+			  </section>
 
+			  <!-- Right side -->
+			  <section class="header-right" ng-init="updateUsername()">
+					<p class="header-item" data-ng-if="username">
+						Hello {{username}}
+					</p>
+					<p class="header-item">
+						<a href ng-if="username" data-ng-click="logout()">logout</a>
+					</p>
+					<p class="header-item">
+						<a href ng-if="!username" ng-href="#/">Sign in</a>
+					</p>
+			    <p class="header-item"><a ng-href="#/home">Home</a></p>
+			    <p class="header-item"><a ng-href="#/about">About</a></p>
+			    <p class="header-item"><a ng-href="#/game" class="button is-info">Play Game</a></p>
+			  </section>
+			</nav>
+		</header>
+		<section class="hero-content">
+			<section class="container">
+				<h1 class="title is-1">Our Team</h1>
+				<p class="subtitle">An app created by Team Spacecataz</p>
+			</section>
+		</section>
+	</section>
+</section>
+
+<section class="section">
+  <div class="container">
+		<section class="columns">
+			<div class="column is-quarter">
+				<p class="image is-128x128">
+					<img src="./images/james.jpg">
+				</p>
+				<a class="icon" href="https://github.com/JHM90" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+				<a class="icon" href="https://www.linkedin.com/in/jhm90" target="_blank">
+					<i class="fa fa-linkedin"></i>
+				</a>
+			</div>
+			<div class="column">
+				<p>
+					<strong>James Mason</strong>
+					<br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+				</p>
+			</div>
+		</section>
+		<hr />
+
+    <section class="columns">
+			<div class="column is-quarter">
+				<p class="image is-128x128">
+					<img class="is-third" src="./images/ardian.jpg">
+				</p>
+				<a class="icon" href="https://github.com/ardianajvazi" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+				<a class="icon" href="https://www.linkedin.com/in/ajvaziardian" target="_blank">
+					<i class="fa fa-linkedin"></i>
+				</a>
+			</div>
+			<div class="column">
+				<p>
+					<strong>Ardian Ajvazi</strong>
+					<br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+				</p>
+			</div>
+    </section>
+		<hr />
+
+		<section class="columns">
+			<div class="column is-quarter">
+				<p class="image is-128x128">
+					<img src="./images/cameron.jpg">
+				</p>
+				<a class="icon" href="https://github.com/cameron4us" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+				<a class="icon" href="https://www.linkedin.com/in/cameron4us" target="_blank">
+					<i class="fa fa-linkedin"></i>
+				</a>
+			</div>
+			<div class="column">
+				<p>
+					<strong>Cameron Forras</strong>
+					<br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+				</p>
+			</div>
+		</section>
+		<hr />
+
+		<section class="columns">
+			<div class="column is-quarter">
+				<p class="image is-128x128">
+					<img src="./images/jesse.jpg">
+				</p>
+				<a class="icon" href="https://github.com/jessethach" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+				<a class="icon" href="https://www.linkedin.com/in/jessethach" target="_blank">
+					<i class="fa fa-linkedin"></i>
+				</a>
+			</div>
+			<div class="column">
+				<p>
+					<strong>Jesse Thach</strong>
+					<br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+				</p>
+			</div>
+		</section>
+		<hr />
+
+		<section class="columns">
+			<div class="column is-quarter">
+				<p class="image is-128x128">
+					<img src="./images/josh.jpg">
+				</p>
+				<a class="icon" href="https://github.com/ricecreamdude" target="_blank">
+					<i class="fa fa-github"></i>
+				</a>
+				<a class="icon" href="https://www.linkedin.com/in/joshua-ho-80b6a251" target="_blank">
+					<i class="fa fa-linkedin"></i>
+				</a>
+			</div>
+			<div class="column">
+				<p>
+					<strong>Joshua Ho</strong>
+					<br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+				</p>
+			</div>
+		</section>
+		<hr />
   </div>
 </section>
+
+<footer class="footer">
+  <section class="container">
+    <section class="is-text-centered">
+      <p>&copy Spacecataz</p>
+    </section>
+  </section>
+</footer>

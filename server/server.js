@@ -13,6 +13,8 @@ app.use((req, res, next) => {
 const authRouter = require(__dirname + '/routes/auth_routes');
 const publicRouter = require(__dirname + '/routes/public_routes');
 
+app.use(express.static(__dirname + '/build'));
+
 app.use('/api' , authRouter);
 app.use('/api' , publicRouter);
 
