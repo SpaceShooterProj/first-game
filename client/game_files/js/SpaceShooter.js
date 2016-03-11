@@ -1,27 +1,31 @@
+var numberOfLives = 3;
 var SpaceShooter = {
   settings: {
-    width: 1024,
-    height: 1024,
+    width: 2048,
+    height: 2048,
     assetsDir: 'game/assets/'
   },
   objects: [],
   scoreCurrency: 'Points ', // Prefix for score.
   score: 0,
   numberOfLives: 1,
-  lives: this.numberOfLives,
+  lives: numberOfLives,
   lifeDudes: [],
   level: null,
   LightPos: [-0.5, 0, 0.5],
   exit: function() {
-    for (var i = 0; i < this.objects.length; i++)
-      this.objects[i].exit();
-    objects = [];
-    score = 0;
-    numberOfLives: 1,
-    lives = this.numberOfLives,
-    lifeDudes = [];
-    level = null;
-    LightPos = [-0.5, 0, 0.5];
+    this.objects = [];
+    this.score = 0;
+    this.lives = numberOfLives,
+    this.lifeDudes = [];
+    this.level = null;
+    this.LightPos = [-0.5, 0, 0.5];
+  },
+  restart: function() {
+    this.score = 0;
+    this.lives = numberOfLives;
+    for (var i = 0; i < this.lifeDudes.length; i++) this.lifeDudes[i].visible = true;
+    this.level.reset();
   },
   update: function (time) {
     for (var i = 0; i < this.objects.length; i++)
@@ -35,28 +39,38 @@ var SpaceShooter = {
     // Remove life and reset everything if lives < 0
     this.lives--;
     if (this.lives < 0) {
-      var thisGame = this;
+      var that = this;
       var gameOverWindow = document.createElement('section');
       gameOverWindow.className = 'game-over-window';
       gameOverWindow.id = 'game-over';
       var gameOverTextArea = document.createElement('h1');
       gameOverTextArea.className = 'game-over-text-area';
       var gameOverText = document.createTextNode('GAME OVER');
+      gameOverTextArea.appendChild(gameOverText);
       var gameResetButton = document.createElement('button');
       gameResetButton.className = 'game-over-reset-button';
       gameResetButton.onclick = function() {
-        thisGame.score = 0;
-        thisGame.lives = thisGame.numberOfLives;
-        for (var i = 0; i < thisGame.lifeDudes.length; i++) thisGame.lifeDudes[i].visible = true;
-        thisGame.level.reset();
+        that.restart();
         var gameOverWindowElement = document.getElementById('game-over');
         gameOverWindowElement.parentNode.removeChild(gameOverWindowElement);
       };
-      var gameResetButtonText = document.createTextNode('Restart');
+      var gameResetButtonText = document.createTextNode('Continue');
       gameResetButton.appendChild(gameResetButtonText);
-      gameOverTextArea.appendChild(gameOverText);
+      var leaveGameButton = document.createElement('button');
+      leaveGameButton.className = 'game-over-leave-button';
+      leaveGameButton.addEventListener("click", function(){
+        var baseURL = function() {
+          if (window.location.href.indexOf('/', 9) !== -1) return window.location.href.substr(0, window.location.href.indexOf('/', 9));
+          return window.location.href;
+        }();
+        window.location.href = baseURL + '/#/home';
+        window.location.reload();
+      });
+      leaveGameButtonText = document.createTextNode('Quit');
+      leaveGameButton.appendChild(leaveGameButtonText);
       gameOverWindow.appendChild(gameOverTextArea);
       gameOverWindow.appendChild(gameResetButton);
+      gameOverWindow.appendChild(leaveGameButton);
       var gameWindow = document.getElementById('game');
       gameWindow.appendChild(gameOverWindow);
     } else {
@@ -106,9 +120,17 @@ SpaceShooter.Element.prototype = {
     }
   },
   exit: function() {
+    this.object = {};
+    this.children = []; // Child objects
+    this.name = '';
+    this.tween = {};
+    this.hitArea = null;
+    this.collisionList = [];
+    this._textureCount = 0;
     this.textures = [];
-    this.object = null;
-    this.size = 0;
+    this.textureSpeed = 3;
+    this.resetAfterLastTexture = false;
+    this.texturesNormals = [];
     this.tint = null;
   },
   reset: function() {},

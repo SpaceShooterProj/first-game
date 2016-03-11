@@ -1,7 +1,7 @@
 {
-  "name": "spacecataz",
+  "name": "spacecataz-server",
   "version": "1.0.0",
-  "description": "Game hub and Spacecataz application.",
+  "description": "Game hub and Spacecataz server.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"

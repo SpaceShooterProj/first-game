@@ -1,7 +1,7 @@
 {
-  "name": "spacecataz",
+  "name": "spacecataz-client",
   "version": "1.0.0",
-  "description": "Game hub and spacecataz application",
+  "description": "Game hub and Spacecataz application.",
   "main": "index.js",
   "scripts": {
     "test": "karma start"

@@ -8,7 +8,7 @@ var runSequence = require('run-sequence');
 
 // Game Tasks
 gulp.task('scripts:game', () => {
-  return gulp.src([(__dirname + '/game_files/js/pixi.js'), (__dirname + '/game_files/js/howler.core.js'), (__dirname + '/game_files/js/tween.js'), (__dirname + '/game_files/js/randomcolor.js'), (__dirname + '/game_files/js/SpaceShooter.js'), (__dirname + '/game_files/js/SpaceShooter.Player.js'), (__dirname + '/game_files/js/SpaceShooter.Assets.js'), (__dirname + '/game_files/js/SpaceShooter.Enemies.js'), (__dirname + '/game_files/js/SpaceShooter.Levels.js'), (__dirname + '/game_files/js/SpaceShooter.Tools.js'), (__dirname + '/game_files/js/game.js')])
+  return gulp.src([(__dirname + '/game_files/js/lib/pixi.js'), (__dirname + '/game_files/js/lib/howler.core.js'), (__dirname + '/game_files/js/lib/tween.js'), (__dirname + '/game_files/js/lib/randomcolor.js'), (__dirname + '/game_files/js/SpaceShooter.js'), (__dirname + '/game_files/js/SpaceShooter.Player.js'), (__dirname + '/game_files/js/SpaceShooter.Assets.js'), (__dirname + '/game_files/js/SpaceShooter.Enemies.js'), (__dirname + '/game_files/js/SpaceShooter.Levels.js'), (__dirname + '/game_files/js/SpaceShooter.Tools.js'), (__dirname + '/game_files/js/game.js')])
     .pipe(plugins.concat('game.min.js'))
     .pipe(plugins.uglify())
     .pipe(gulp.dest(__dirname + '/../server/build/game/js/'));
