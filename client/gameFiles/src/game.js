@@ -33,6 +33,9 @@ function init() {
   players.push(player);
   InitializeShipActions(players);
 }
+function exit() {
+  renderer = null, stage = null, players = [], sounds = [];
+}
 function update(time) {
   requestAnimationFrame(update);
   SpaceShooter.update(time);

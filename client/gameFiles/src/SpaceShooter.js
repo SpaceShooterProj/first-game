@@ -1,4 +1,3 @@
-var numberOfLives = 1;
 var SpaceShooter = {
   settings: {
     width: 1024,
@@ -8,10 +7,22 @@ var SpaceShooter = {
   objects: [],
   scoreCurrency: 'Points ', // Prefix for score.
   score: 0,
-  lives: numberOfLives,
+  numberOfLives: 1,
+  lives: this.numberOfLives,
   lifeDudes: [],
   level: null,
   LightPos: [-0.5, 0, 0.5],
+  exit: function() {
+    for (var i = 0; i < this.objects.length; i++)
+      this.objects[i].exit();
+    objects = [];
+    score = 0;
+    numberOfLives: 1,
+    lives = this.numberOfLives,
+    lifeDudes = [];
+    level = null;
+    LightPos = [-0.5, 0, 0.5];
+  },
   update: function (time) {
     for (var i = 0; i < this.objects.length; i++)
       this.objects[i].update(time);
@@ -35,7 +46,7 @@ var SpaceShooter = {
       gameResetButton.className = 'game-over-reset-button';
       gameResetButton.onclick = function() {
         thisGame.score = 0;
-        thisGame.lives = numberOfLives;
+        thisGame.lives = thisGame.numberOfLives;
         for (var i = 0; i < thisGame.lifeDudes.length; i++) thisGame.lifeDudes[i].visible = true;
         thisGame.level.reset();
         var gameOverWindowElement = document.getElementById('game-over');
@@ -93,6 +104,9 @@ SpaceShooter.Element.prototype = {
     if (this.tint != null) {
       this.object.tint = this.tint;
     }
+  },
+  exit: function() {
+    this = null;
   },
   reset: function() {},
   add: function () {
