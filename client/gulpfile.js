@@ -18,7 +18,7 @@ const sassFiles = ['app/**/styles.sass'];
 gulp.task('scripts:game', () => {
   return gulp.src(['./gameFiles/src/pixi.js', './gameFiles/src/howler.core.js', './gameFiles/src/tween.js', './gameFiles/src/randomcolor.js', './gameFiles/src/SpaceShooter.js', './gameFiles/src/SpaceShooter.Player.js', './gameFiles/src/SpaceShooter.Assets.js', './gameFiles/src/SpaceShooter.Enemies.js', './gameFiles/src/SpaceShooter.Levels.js', './gameFiles/src/SpaceShooter.Tools.js', './gameFiles/src/game.js'])
     .pipe(plugins.concat('game.min.js'))
-    .pipe(plugins.uglify())
+    // .pipe(plugins.uglify())
     .pipe(gulp.dest(__dirname + '/build/game/js/'));
 });
 gulp.task('assets:game', () => {
@@ -82,6 +82,13 @@ gulp.task('webpack:test', () => {
     }))
     .pipe(gulp.dest('test/'));
 });
+gulp.task('build:distribution', () => {
+  gulp.src(__dirname + '/build/**')
+    .pipe(gulp.dest(__dirname + '/../server/build/'));
+});
+gulp.task('build:heroku', function(callback) {
+  runSequence('build:distribution', callback);
+});
 gulp.task('build:game', function(callback) {
   runSequence('scripts:game', 'html:game', 'css:game', 'assets:game', callback);
 });
@@ -89,6 +96,6 @@ gulp.task('build:dev', function(callback) {
   runSequence('html:dev', 'webpack:dev', 'sass:dev', 'images:dev', callback);
 });
 gulp.task('build:app', function(callback) {
-  runSequence('build:game', 'build:dev', callback);
+  runSequence('build:game', 'build:dev', 'build:heroku', callback);
 });
 gulp.task('default', ['build:app']);
