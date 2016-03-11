@@ -1,68 +1,106 @@
 const gulp = require('gulp');
-const eslint = require('gulp-eslint');
 const webpack = require('webpack-stream');
 const html = require('html-loader');
-const sass = require('gulp-sass');
-const maps = require('gulp-sourcemaps');
-const minifyCss = require('gulp-minify-css');
+const imageOptimization = require('gulp-image-optimization');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const plugins = gulpLoadPlugins();
 var runSequence = require('run-sequence');
 
-const jsFiles = ['./*.js', 'app/**/*.js', '!node_modules/**'];
-const clientScripts = ['app/js/entry.js'];
-const staticFiles = ['app/**/*.html'];
-const sassFiles = ['app/**/styles.sass'];
-// const testFiles = ['test/test_entry.js'];
-
+// Game Tasks
 gulp.task('scripts:game', () => {
-  return gulp.src(['./gameFiles/src/pixi.js', './gameFiles/src/howler.core.js', './gameFiles/src/tween.js', './gameFiles/src/randomcolor.js', './gameFiles/src/SpaceShooter.js', './gameFiles/src/SpaceShooter.Player.js', './gameFiles/src/SpaceShooter.Assets.js', './gameFiles/src/SpaceShooter.Enemies.js', './gameFiles/src/SpaceShooter.Levels.js', './gameFiles/src/SpaceShooter.Tools.js', './gameFiles/src/game.js'])
+  return gulp.src([(__dirname + '/game_files/js/lib/pixi.js'), (__dirname + '/game_files/js/lib/howler.core.js'), (__dirname + '/game_files/js/lib/tween.js'), (__dirname + '/game_files/js/lib/randomcolor.js'), (__dirname + '/game_files/js/SpaceShooter.js'), (__dirname + '/game_files/js/SpaceShooter.Player.js'), (__dirname + '/game_files/js/SpaceShooter.Assets.js'), (__dirname + '/game_files/js/SpaceShooter.Enemies.js'), (__dirname + '/game_files/js/SpaceShooter.Levels.js'), (__dirname + '/game_files/js/SpaceShooter.Tools.js'), (__dirname + '/game_files/js/game.js')])
     .pipe(plugins.concat('game.min.js'))
-    // .pipe(plugins.uglify())
-    .pipe(gulp.dest(__dirname + '/build/game/js/'));
+    .pipe(plugins.uglify())
+    .pipe(gulp.dest(__dirname + '/../server/build/game/js/'));
 });
-gulp.task('assets:game', () => {
-  return gulp.src(__dirname + '/gameFiles/src/assets/**')
-    .pipe(gulp.dest(__dirname + '/build/game/assets'));
+gulp.task('images:game', () => {
+  return gulp.src(__dirname + '/game_files/assets/images/**')
+    .pipe(imageOptimization({
+      optimizationLevel: 7,
+      progressive: true,
+      interlaced: true
+    }))
+    .pipe(gulp.dest(__dirname + '/../server/build/game/assets'));
+});
+gulp.task('sounds:game', () => {
+  return gulp.src(__dirname + '/game_files/assets/music/**')
+    .pipe(gulp.dest(__dirname + '/../server/build/game/assets'));
 });
 gulp.task('html:game', () => {
-  return gulp.src(__dirname + '/gameFiles/src/game.html')
+  return gulp.src(__dirname + '/game_files/game.html')
     .pipe(plugins.htmlmin({ collapseWhitespace: true }))
     .pipe(plugins.rename('/app/views/game_main.html'))
     .pipe(gulp.dest(__dirname));
 });
 gulp.task('css:game', () => {
-  return gulp.src(__dirname + '/gameFiles/src/*.css')
+  var processors = [
+    require('cssnext'),
+    require('postcss-font-family'),
+    require('postcss-font-magician'),
+    require('autoprefixer'),
+    require('css-mqpacker'),
+    require('csswring')
+  ];
+  return gulp.src(__dirname + '/game_files/css/*.scss')
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.sass().on('error', plugins.sass.logError))
+    .pipe(plugins.postcss(processors))
     .pipe(plugins.cssnano())
-    .pipe(gulp.dest(__dirname + '/build/game/css/'));
+    .pipe(plugins.sourcemaps.write('./'))
+    .pipe(gulp.dest(__dirname + '/../server/build/game/css/'));
+});
+
+// Client Tasks
+gulp.task('favicon:dev', () => {
+  return gulp.src(__dirname + '/app/favicon.ico')
+    .pipe(gulp.dest(__dirname + '/../server/build'));
 });
 gulp.task('html:dev', () => {
-  gulp.src(staticFiles)
-    .pipe(gulp.dest(__dirname + '/build'));
+  return gulp.src('app/**/*.html')
+    .pipe(plugins.htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest(__dirname + '/../server/build'));
 });
-gulp.task('sass:dev', () => {
-  gulp.src(sassFiles)
-    .pipe(maps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(minifyCss())
-    .pipe(maps.write('./'))
-    .pipe(gulp.dest(__dirname + '/build'))
+gulp.task('css:dev', () => {
+  var processors = [
+    require('cssnext'),
+    require('postcss-font-family'),
+    require('postcss-font-magician'),
+    require('autoprefixer'),
+    require('css-mqpacker'),
+    require('csswring')
+  ];
+  return gulp.src('app/css/styles.sass')
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.sass().on('error', plugins.sass.logError))
+    .pipe(plugins.postcss(processors))
+    .pipe(plugins.cssnano())
+    .pipe(plugins.sourcemaps.write('./'))
+    .pipe(gulp.dest(__dirname + '/../server/build/css'));
 });
 gulp.task('webpack:dev', () => {
-  gulp.src(clientScripts)
+  return gulp.src('app/js/entry.js')
     .pipe(webpack({
       output: {
-        filename: 'bundle.js'
+        filename: 'bundle.min.js'
       }
     }))
-    .pipe(gulp.dest('build/'));
+    .pipe(plugins.concat('bundle.min.js'))
+    .pipe(plugins.uglify())
+    .pipe(gulp.dest('/../server/build/js/'));
 });
 gulp.task('images:dev', () => {
-  gulp.src(__dirname + '/app/images/**/*')
-    .pipe(gulp.dest(__dirname + '/build/images'));
+  return gulp.src(__dirname + '/app/images/**/*')
+    .pipe(imageOptimization({
+      optimizationLevel: 7,
+      progressive: true,
+      interlaced: true
+    }))
+    .pipe(gulp.dest(__dirname + '/../server/build/images'));
 });
+
+// Test Tasks
 gulp.task('webpack:test', () => {
-  gulp.src(__dirname + '/test/test_entry.js')
+  return gulp.src(__dirname + '/test/test_entry.js')
     .pipe(webpack({
       output: {
         filename: 'test_bundle.js'
@@ -82,20 +120,23 @@ gulp.task('webpack:test', () => {
     }))
     .pipe(gulp.dest('test/'));
 });
-gulp.task('build:distribution', () => {
-  gulp.src(__dirname + '/build/**')
-    .pipe(gulp.dest(__dirname + '/../server/build/'));
-});
-gulp.task('build:heroku', function(callback) {
-  runSequence('build:distribution', callback);
-});
+
+// Build Tasks
 gulp.task('build:game', function(callback) {
-  runSequence('scripts:game', 'html:game', 'css:game', 'assets:game', callback);
+  runSequence('scripts:game', 'html:game', 'css:game', 'images:game', 'sounds:game', callback);
 });
 gulp.task('build:dev', function(callback) {
-  runSequence('html:dev', 'webpack:dev', 'sass:dev', 'images:dev', callback);
+  runSequence('favicon:dev', 'html:dev', 'webpack:dev', 'css:dev', 'images:dev', callback);
 });
+gulp.task('build:heroku', function(callback) {
+  runSequence('build:game', 'build:dev', callback);
+});
+gulp.task('build:test', function(callback) {
+  runSequence('webpack:test', callback);
+});
+
+// Application Task
 gulp.task('build:app', function(callback) {
-  runSequence('build:game', 'build:dev', 'build:heroku', callback);
+  runSequence('build:heroku', 'build:test', callback);
 });
 gulp.task('default', ['build:app']);

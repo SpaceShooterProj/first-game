@@ -1,7 +1,7 @@
 {
-  "name": "spacecataz",
-  "version": "0.0.1",
-  "description": "Game protal with user profiles",
+  "name": "spacecataz-server",
+  "version": "1.0.0",
+  "description": "Game hub and Spacecataz server.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -10,10 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/SpaceShooterProj/first-game.git"
   },
-  "keywords": [
-    "games",
-    "portal"
-  ],
+  "keywords": [],
   "author": "James Mason, Cameron Forras, Jesse Thach, Joshua Ho, Ardian Ajvazi",
   "license": "MIT",
   "bugs": {

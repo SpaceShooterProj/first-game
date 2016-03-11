@@ -1,8 +1,10 @@
 require(__dirname + '/../app/js/entry');
 require('angular-mocks');
 
-require(__dirname + '/style_controller_test.js');
-require(__dirname + '/signin_controller_test.js');
-require(__dirname + '/signup_controller_test.js');
-require(__dirname + '/auth_controller_test.js');
-require(__dirname + '/user_auth_service_test.js');
+//Controllers
+require(__dirname + '/controllers/auth/signin_controller_test');
+require(__dirname + '/controllers/auth/signup_controller_test');
+require(__dirname + '/controllers/auth/auth_controller_test');
+
+//Services
+require(__dirname + '/services/auth/user_auth_service_test');

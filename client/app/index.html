@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html ng-app="gameApp" ng-controller="StyleController">
+<html ng-app="gameApp">
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <link data-ng-if="mainstyle" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link data-ng-if="mainstyle" rel="stylesheet" href="/sass/styles.css">
-    <link data-ng-cloak data-ng-if="!mainstyle" rel="stylesheet" href="/game/css/style.css" media="screen" title="no title" charset="utf-8">
+    <title>Spacecataz</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
     <div>
@@ -13,6 +12,6 @@
         <section data-ng-view></section>
       </main>
     </div>
-    <script src="bundle.js"></script>
+    <script src="/js/bundle.min.js"></script>
   </body>
 </html>

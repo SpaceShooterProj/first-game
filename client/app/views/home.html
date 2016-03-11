@@ -6,11 +6,11 @@
 			  <!-- Left side -->
 			  <section class="header-left">
 			    <section class="header-item" href="#">
-			    	<img src="./images/tyhead.png" alt=>
+						<img src="/images/tyhead.png" alt="">
+            <span> </span>
 			      <p class="control is-grouped">Spacecataz</p>
 			    </section>
 			  </section>
-
 			  <!-- Right side -->
 				<section class="header-right" ng-init="updateUsername()">
 					<p class="header-item" data-ng-if="username">
@@ -22,7 +22,6 @@
 					<p class="header-item">
 						<a href ng-if="!username" ng-href="#/">Sign in</a>
 					</p>
-			    <p class="header-item"><a ng-href="#/home">Home</a></p>
 			    <p class="header-item"><a ng-href="#/about">About</a></p>
 			    <p class="header-item"><a ng-href="#/game" class="button is-info">Play Game</a></p>
 			  </section>
@@ -36,27 +35,19 @@
 		</section>
 	</section>
 </section>
-
 <section class="section" ng-init="leaderBoard = [
-{name:'James', score:'1,000,000'},
 {name:'Ardian', score:'950,000'},
 {name:'Josh', score:'875,000'},
 {name:'Jesse', score:'800,000'},
 {name:'Cameron', score:'550,000'},
-{name:'Aaron', score:';;;;;;;;;'},
-{name:'Tyler', score:'-50,000'}
+{name:'James', score:'500,000'}
 ]">
-
   <section class="container">
-
 			<section class="columns">
-
 				<section class="column is-half is-offset-quarter">
-
 					<input ng-model="searchText" class="input" type="text" placeholder="Search LeaderBoard">
 				</section>
 			</section>
-
 			<section class="columns">
 				<section class="column is-half is-offset-quarter">
 			    <section class="notification">
@@ -69,6 +60,5 @@
 			    </section>
 				</section>
 			</section>
-
   </section>
 </section>

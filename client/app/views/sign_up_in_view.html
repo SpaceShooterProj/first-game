@@ -1,20 +1,42 @@
-<section class="hero is-primary" ng-init="isMain()">
-  <div class="hero-content">
-    <div class="container">
-      <h1 class="title">
-        SPACECATAZ
-      </h1>
-      <h2 class="subtitle">
-        Open Source Games
-      </h2>
-    </div>
-  </div>
+<section class="hero is-primary" ng-controller="authController" ng-init="isMain()">
+  <section class="hero-header">
+		<header class="header">
+			<!-- Main container -->
+			<nav class="container">
+			  <!-- Left side -->
+			  <section class="header-left">
+			    <section class="header-item" href="#">
+			    	<img src="/images/tyhead.png" alt="">
+            <span> </span>
+			      <p class="control is-grouped">Spacecataz</p>
+			    </section>
+			  </section>
+			  <!-- Right side -->
+				<section class="header-right" ng-init="updateUsername()">
+					<p class="header-item" data-ng-if="username">
+						Hello {{username}}
+					</p>
+          <p class="header-item">
+						<a href ng-if="username" data-ng-click="logout()">logout</a>
+					</p>
+			    <p class="header-item"><a ng-href="#/home">Home</a></p>
+			    <p class="header-item"><a ng-href="#/about">About</a></p>
+			    <p class="header-item"><a ng-href="#/game" class="button is-info">Play Game</a></p>
+			  </section>
+			</nav>
+		</header>
+		<section class="hero-content">
+			<section class="container">
+				<h1 class="title is-1">SPACECATAZ</h1>
+				<p class="subtitle">An app created by Team Spacecataz</p>
+			</section>
+		</section>
+	</section>
 </section>
 <section class="section">
   <section class="container" >
     <section class="columns is-mobile">
       <section class="column is-half is-offset-quarter">
-
         <form  name="authForm" data-ng-submit="submit(auth)">
           <p class="control">
             <label class="label" data-ng-if="signup" for="username">Username: </label>
@@ -22,7 +44,7 @@
           </p>
           <p class="control">
             <label class="label" for="email">Email: </label>
-            <input class="input is-primary" type="text" required name="email" data-ng-model="auth.email">
+            <input class="input is-primary" type="email" required name="email" data-ng-model="auth.email">
           </p>
           <p class="control">
             <label class="label" for="password">Password</label>
@@ -36,10 +58,8 @@
           <p class="control">
             <button class="button is-primary" type="submit" data-ng-disabled="(signup && (auth.confirmation !== auth.password)) || authForm.$invalid">{{signup ? 'Create New User' : 'Sign In'}}</button>
           </p>
-
         </form>
         <br />
-
         <section ng-if="userExists" class="notification is-warning">
           Username already exists – try again!
         </section>
@@ -60,21 +80,14 @@
   <div class="columns">
     <div class="column is-4">
     </div>
-
     <div class="column is-2 is-offset-1">
       <div>
         <p>
           <a class="icon" href="https://github.com/SpaceShooterProj/first-game">
             <i class="fa fa-github">GitHub</i>
           </a><br />
-          <p>&copy Spacecataz</p>
-
         </p>
       </div>
-    </div>
-    <div class="column is-2 is-offset-2">
-      <a class="button is-primary is-outlined" ng-href="/#/home">Home</a>
-      <a class="button is-primary is-outlined" ng-href="/#/about">About Us</a>
     </div>
   </div>
 </footer>
