@@ -5,7 +5,8 @@
 			<nav class="container">
 			  <!-- Left side -->
 			  <section class="header-left">
-			    <section class="header-item">
+			    <section class="header-item" href="#">
+			    	<img src="./images/tyhead.png" alt=>
 			      <p class="control is-grouped">Spacecataz</p>
 			    </section>
 			  </section>
@@ -36,10 +37,15 @@
 	</section>
 </section>
 
-<section class="section" ng-init="openSourceGames = [{name:'John', type:'Arcade', url:'https://github.com/gamebytes/cellmates'},
-                         {name:'Asteroids', type:'Arcade', url:'https://github.com/dmcinnes/HTML5-Asteroids'},
-                         {name:'Coil', type:'Arcade', url:'https://github.com/leereilly/Coil'},
-                         {name:'Game of Life', type:'Mobile', url:'https://github.com/zsoltk/GameOfLife'}]">
+<section class="section" ng-init="leaderBoard = [
+{name:'James', score:'1,000,000'},
+{name:'Ardian', score:'950,000'},
+{name:'Josh', score:'875,000'},
+{name:'Jesse', score:'800,000'},
+{name:'Cameron', score:'550,000'},
+{name:'Aaron', score:';;;;;;;;;'},
+{name:'Tyler', score:'-50,000'}
+]">
 
   <section class="container">
 
@@ -47,7 +53,7 @@
 
 				<section class="column is-half is-offset-quarter">
 
-					<input ng-model="searchText" class="input" type="text" placeholder="Search Games">
+					<input ng-model="searchText" class="input" type="text" placeholder="Search LeaderBoard">
 				</section>
 			</section>
 
@@ -55,10 +61,10 @@
 				<section class="column is-half is-offset-quarter">
 			    <section class="notification">
 						<table id="searchTextResults">
-						  <tr><th>Game</th><th>Type</th></tr>
-						  <tr ng-repeat="openSource in openSourceGames | filter:searchText">
-						    <td>{{openSource.name}}</td>
-						    <td>{{openSource.type}}</td>
+						  <tr><th>Name</th><th>Score</th></tr>
+						  <tr ng-repeat="leader in leaderBoard | filter:searchText">
+						    <td>{{leader.name}}</td>
+						    <td>{{leader.score}}</td>
 						  </tr>
 			    </section>
 				</section>
