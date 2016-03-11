@@ -14,10 +14,14 @@ module.exports = function(app) {
   app.factory('userAuth', ['$http', '$window', function($http, $window) {
     var token;
     var user;
+    var baseURL = function() {
+      if (window.location.href.indexOf('/', 9) !== -1) return window.location.href.substr(0, window.location.href.indexOf('/', 9));
+      return window.location.href;
+    }();
     var auth = {
       createUser: function(user, callback) {
         callback = callback || function() {};
-        $http.post('http://localhost:3000/api/signup', user)
+        $http.post((baseURL + '/api/signup').toString(), user)
         .then(function(res) {
           token = $window.localStorage.token = res.data.token;
           callback(null, res);
@@ -25,12 +29,11 @@ module.exports = function(app) {
           callback(res)
         });
       },
-
       signIn: function(user, callback) {
         callback = callback || function() {};
         $http({
           method: 'GET',
-          url: 'http://localhost:3000/api/signin',
+          url: (baseURL + '/api/signin').toString(),
           headers: {
             'Authorization': 'Basic ' + btoa((user.email + ':' + user.password))
           }
@@ -42,24 +45,21 @@ module.exports = function(app) {
           callback(res);
         });
       },
-
       getToken: function() {
         token = token || $window.localStorage.token;
         return token;
       },
-
       signOut: function(callback) {
         $window.localStorage.token = null;
         token = null;
         user = null;
         if(callback) callback();
       },
-
       getUsername: function(callback) {
         callback = callback || function() {};
         $http({
           method: 'GET',
-          url: 'http://localhost:3000/api/currentuser',
+          url: (baseURL + '/api/currentuser').toString(),
           headers: {
             token: auth.getToken()
           }
@@ -71,7 +71,6 @@ module.exports = function(app) {
           callback(res);
         });
       },
-
       username: function() {
         if(!user) auth.getUsername();
         return user;
