@@ -1,7 +1,7 @@
 const express = require('express');
 const app = module.exports = exports = express();
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/Space-Shooter');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/Spacecataz');
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:5000');

@@ -106,7 +106,10 @@ SpaceShooter.Element.prototype = {
     }
   },
   exit: function() {
-    this = null;
+    this.textures = [];
+    this.object = null;
+    this.size = 0;
+    this.tint = null;
   },
   reset: function() {},
   add: function () {
