@@ -27,6 +27,9 @@ SpaceShooter.Enemy.prototype.init = function (textures) {
     this.bullets.push(bullet);
   }
 };
+SpaceShooter.Enemy.prototype.exit = function() {
+  this.bullets = [];
+};
 SpaceShooter.Enemy.prototype.update = function (time) {
   SpaceShooter.Element.prototype.update.call(this, time);
 };
@@ -66,6 +69,9 @@ SpaceShooter.EnemyBigShip.prototype.init = function (textures) {
     bullet.add();
     this.bullets.push(bullet);
   }
+};
+SpaceShooter.EnemyBigShip.prototype.exit = function() {
+  this.bullets = [];
 };
 SpaceShooter.EnemyBigShip.prototype.update = function (time) {
   if (false !== SpaceShooter.Enemy.prototype.update.call(this, time)) {

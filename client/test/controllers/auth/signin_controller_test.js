@@ -5,6 +5,10 @@ describe('Signin controller', () => {
   var $scope;
   var $ControllerConstructor;
   var user;
+  var baseURL = function() {
+    if (window.location.href.indexOf('/', 9) !== -1) return window.location.href.substr(0, window.location.href.indexOf('/', 9));
+    return window.location.href;
+  }();
 
   beforeEach(angular.mock.module('gameApp'));
 
@@ -36,7 +40,7 @@ describe('Signin controller', () => {
         email: 'test123@test.com'
       };
 
-      $httpBackend.expectGET('http://localhost:3000/api/signin').respond(401, user);
+      $httpBackend.expectGET(baseURL + '/api/signin').respond(401, user);
       $scope.submit(user);
       $httpBackend.flush();
       expect($scope.userWrong).toBe(true);
@@ -50,7 +54,7 @@ describe('Signin controller', () => {
         token: 'testtoken'
       };
 
-      $httpBackend.expectGET('http://localhost:3000/api/signin').respond(200, user);
+      $httpBackend.expectGET(baseURL + '/api/signin').respond(200, user);
       $scope.submit(user);
       $httpBackend.flush();
       expect($scope.userWrong).toBe(null);

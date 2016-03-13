@@ -1,6 +1,6 @@
 var angular = require('angular');
 module.exports = function(app) {
-  app.controller('GameController', ['$scope', '$compile', '$window', '$location', function($scope, $compile, $window, $location) {
+  app.controller('GameController', ['$window', '$location', function($window, $location) {
     if (!$window.localStorage.token) $location.url('/');
     if ($window.localStorage.token) $location.url('/game');
   }]);

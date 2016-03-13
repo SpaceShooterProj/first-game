@@ -1,0 +1,23 @@
+.fadeOut{
+  opacity: 0.2 !important;
+}
+.fadeIn{
+  opacity:1 !important;
+}
+.game-over-window {
+  position: absolute !important;
+  left: 0px !important;
+  top: 0px !important;
+  width: 100% !important;
+  height: 100% !important;
+  text-align:center !important;
+}
+.game-over-reset-button, .game-over-leave-button {
+  width: 200px !important;
+  margin: 20px !important;
+  padding: 10px !important;
+  color: black !important;
+}
+.game-over-text-area {
+  margin-top: 20% !important;
+}
