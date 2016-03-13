@@ -15,11 +15,10 @@ var HOST = 'localhost:3000';
 
 describe('Auth Route Tests' , () => {
 
-  //Erase DB once tests are ended
-  // after( (done) => {
-  //   mongoose.connection.db.dropDatabase( () => {} );
-  //   done();
-  // });
+  after( (done) => {
+    mongoose.connection.db.dropDatabase( () => {} );
+    done();
+  });
 
   describe( 'POST to /signup' , () => {
     it('SUCCESS: POST to /signup should generate a token' , (done) => {
@@ -103,7 +102,6 @@ describe('Auth Route Tests' , () => {
         });
     });
 
-      // res.json({token: user.generateToken()});
   });
 
 });
